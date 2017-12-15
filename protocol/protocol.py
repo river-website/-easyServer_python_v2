@@ -8,6 +8,3 @@ class protocol(singleton):
         pass
     def getInfo(self,data):
         pass
-    def factoryMethod(self,protocolName):
-        if protocolName == 'http':
-            return httpProtocol()

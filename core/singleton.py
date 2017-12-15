@@ -3,7 +3,7 @@ class singleton(object):
     _oldInit = None
     _init = True
     def __new__(cls,*args,**kwd):
-        if Singleton != cls:
+        if singleton != cls:
             if not cls._instance:
                 cls._oldInit = cls.__init__
                 cls.__init__ = cls.__Singleton_Init__

@@ -1,14 +1,14 @@
+from server.factory import *
 from core.singleton import *
-from server.server import *
 
 class easy(singleton):
     def start(self,serverData):
         def startOneServer(serverName,data):
-            ser = server.factoryMethod(serverName)
+            ser = getServer(serverName)
             ser.init(data)
         self.__back()
         list(map(startOneServer, serverData.keys(),serverData.values()))
-        server.factoryMethod().start()
+        getServer().start()
     def __back(self):
         pass
     def monitor(self):

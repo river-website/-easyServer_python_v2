@@ -1,6 +1,8 @@
 from server.server import *
-from protocol.protocol import *
+from server.baseServer import *
+from protocol.factory import *
 from core.threadPool import *
+
 
 class webServer(server):
     __connectToWebPath = {}
@@ -14,10 +16,11 @@ class webServer(server):
             fd = addrFds[addr]
             self.__connectToWebPath[fd] = webPath
 
-        self.protocol = protocol.factoryMethod("http")
+        self.protocol = getProtocol("http")
         self.__threadPool = threadPool(100)
-        ser = server.factoryMethod()
-        addrFds = ser.init(data.keys(),self)
-        list(map(toWebPath),data.keys(),data.values())
-    def onMessage(self,connect,data):
-        pass
+        ser = baseServer()
+        addrFds = ser.init(list(map(lambda addr:'tcp://'+addr, data.keys())),self)
+        list(map(toWebPath,data.keys(),data.values()))
+    def onMessage(self,connect,request):
+        app = self.__connectToWebPath[connect.getSocket().fileno()]
+        connect.send(app.doRequest(request))

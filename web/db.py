@@ -1,0 +1,3 @@
+
+class db(object):
+    pass

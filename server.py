@@ -1,13 +1,12 @@
 from easy import *
+from baiduyun.app import *
 if __name__ == '__main__':
+    baiduyunApp = baiduyun()
     server = {
         'webServer':{
             '0.0.0.0:81':{
-                'webSite':'/html/'
+                'webSite':baiduyunApp
             },
-            '0.0.0.0:88':{
-                'webSite':'/html/'
-            }
         }
     }
     easy().start(server)

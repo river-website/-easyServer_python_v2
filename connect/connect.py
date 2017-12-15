@@ -1,4 +1,3 @@
-from connect.tcpConnect import *
 class connect:
     _socket = None
     _protocol = None
@@ -6,20 +5,14 @@ class connect:
     _rBuffer = ''
     _wBuffer = ''
     _currentPackageSize = 0
-    def read(self,socket):
+    def read(self,socket,args=None):
         pass
     def write(self,socket,data):
         pass
     def send(self,data):
         pass
-    def close(self,data):
+    def close(self):
         pass
-
-    def factorMethod(self,connectName):
-        if connectName == 'tcp':
-            return tcpConnect()
-        else:
-            return
 
     def getSocket(self):
         return self._socket
@@ -34,8 +27,10 @@ class connect:
     def setProtocol(self,protocol):
         self._protocol = protocol
     def getRemoteIp(self):
-        pos = strrpos(self._remoteAddress, ':')
-        return ($pos)?trim(substr(self._remoteAddress, 0, $pos), '[]'):''
-    def getRemotePort(self)
-        return (self._remoteAddress)? (int)substr(strrchr(self._remoteAddress, ':'), 1):0
-    
+        pass
+        # pos = strrpos(self._remoteAddress, ':')
+        # return ($pos)?trim(substr(self._remoteAddress, 0, $pos), '[]'):''
+    def getRemotePort(self):
+        pass
+        # return (self._remoteAddress)? (int)substr(strrchr(self._remoteAddress, ':'), 1):0
+
